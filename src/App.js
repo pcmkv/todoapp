@@ -6,15 +6,18 @@ import ListTask  from './ListTask';
 
 
 let items = ['Task1', 'Task2','Task3'];
-
 class App extends Component {
+
+    
     constructor(props){
         super(props);
         this.state = {
-            tasks: items
+            tasks: items,
+            editIndex:null
         };
         console.log("State",this.state);
         this.updateTask = this.updateTask.bind(this);
+        
     }
 
     updateTask(nameTask){
@@ -31,6 +34,18 @@ class App extends Component {
         tasks.splice(index,1);
         this.setState({ tasks:tasks });
     }
+
+    editTask(index){
+        console.log("parent index",index);
+        this.setState({
+            editIndex:index
+        });
+        console.log("stateIndex",index);
+        console.log("stateIndexState",this.state.editIndex);
+    }
+
+    
+
   render() {
     return (
         <div className="container">
@@ -41,7 +56,7 @@ class App extends Component {
                     </div>
                     <div className="panel-body">
                         <AddTask updateTask={this.updateTask} />
-                        <ListTask  items = {this.state.tasks} remove = {this.removeTask} />
+                        <ListTask  editIndex ={this.state.editIndex} items = {this.state.tasks} edit={this.editTask.bind(this)} remove = {this.removeTask.bind(this)} />
                     </div>
                 </div>
             </div>

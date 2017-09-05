@@ -20,7 +20,7 @@ class AddTask extends Component {
                 <div className="input-group">
                     <input type="text" className="form-control" placeholder="Name Task"/>
                       <span className="input-group-btn">
-                        <button className="btn btn-default" type="submit">
+                        <button className="btn btn-default"  type="submit">
                           Add
                         </button>
                       </span>
